@@ -60,6 +60,18 @@ enum config_save_flags {
 #define	CONFIG_STATUS_FILEINVALID	(void *)-2
 
 /*!
+ * \brief Types used for ast_include_new() include_type
+ */
+typedef enum {
+	/*! #include statements */
+	CONFIG_STATEMENT_INCLUDE    = 0,
+	/*! #exec statements */
+	CONFIG_STATEMENT_EXEC       = 1,
+	/*! #tryinclude statements */
+	CONFIG_STATEMENT_TRYINCLUDE = 2,
+} include_statement_type;
+
+/*!
  * \brief Types used in ast_realtime_require_field
  */
 typedef enum {
@@ -914,7 +926,7 @@ void ast_category_rename(struct ast_category *cat, const char *name);
 struct ast_variable *_ast_variable_new(const char *name, const char *value, const char *filename, const char *file, const char *function, int lineno);
 #define ast_variable_new(name, value, filename) _ast_variable_new(name, value, filename, __FILE__, __PRETTY_FUNCTION__, __LINE__)
 
-struct ast_config_include *ast_include_new(struct ast_config *conf, const char *from_file, const char *included_file, int is_exec, const char *exec_file, int from_lineno, char *real_included_file_name, int real_included_file_name_size);
+struct ast_config_include *ast_include_new(struct ast_config *conf, const char *from_file, const char *included_file, include_statement_type include_type, const char *exec_file, int from_lineno, char *real_included_file_name, int real_included_file_name_size);
 struct ast_config_include *ast_include_find(struct ast_config *conf, const char *included_file);
 void ast_include_rename(struct ast_config *conf, const char *from_file, const char *to_file);
 void ast_variable_append(struct ast_category *category, struct ast_variable *variable);

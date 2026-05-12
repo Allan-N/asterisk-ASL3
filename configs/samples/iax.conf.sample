@@ -26,9 +26,26 @@
                          ; IPv6 the address needs to be in brackets then colon
                          ; and port (e.g. bindaddr=[2001:db8::1]:4569).
 
+;bindaddr=0.0.0.0        ; The default address to listen on (for IPv4 only)
+
+;bindaddr=::             ; Specify this address to listen for connections
+                         ; NOTE: with 'register_dual_stack = yes', connections will
+                         ; be limited to just IPv6.
+
 ;bindaddr=192.168.0.1    ; You can specify 'bindaddr' more than once to bind to
                          ; multiple addresses, but the first will be the
                          ; default. IPv6 addresses are accepted.
+
+;
+; Set 'register_dual_stack' to yes if you need to register both IPv4 and IPv6
+; addresses with the IAX2 'register =' registration server(s)
+;
+; Accepted values: yes, no
+; Default value:   no
+;
+;
+;register_dual_stack=yes
+;
 
 ;
 ; Set 'iaxcompat' to yes if you plan to use layered switches or some other
@@ -348,6 +365,12 @@ encryption=yes
 ; See 'qualify' for individual peers to turn on for just a specific peer.
 ;
 autokill=yes
+;
+; When an outbound call has multiple peer addresses, this controls
+; how long to wait for a response from one address before trying the next
+; address.  Set to 0 to disable trying additional addresses.
+;
+;peer_no_response_delay=200
 ;
 ; codecpriority controls the codec negotiation of an inbound IAX2 call.
 ; This option is inherited to all user entities.  It can also be defined

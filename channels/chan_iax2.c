@@ -15237,11 +15237,8 @@ static int set_config(const char *config_file, int reload, int forced)
 			if (reload) {
 				ast_log(LOG_NOTICE, "Ignoring bindaddr on reload\n");
 			} else {
-
 				if (!ast_parse_arg(v->value, PARSE_ADDR, NULL)) {
-
 					ast_sockaddr_parse(&bindaddr, v->value, 0);
-
 					if (!ast_sockaddr_port(&bindaddr)) {
 						ast_sockaddr_set_port(&bindaddr, portno);
 					}
@@ -15257,7 +15254,6 @@ static int set_config(const char *config_file, int reload, int forced)
 						iax2_register_update_bindings();
 						ast_netsock_unref(ns);
 					}
-
 				} else {
 					ast_log(LOG_WARNING, "Invalid address '%s' specified, at line %d\n", v->value, v->lineno);
 				}

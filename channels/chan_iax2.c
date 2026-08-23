@@ -146,7 +146,7 @@
 	</application>
 	<function name="IAXBINDING" language="en_US">
 		<since>
-			<version>23.0.0</version>
+			<version>22.10.1</version>
 		</since>
 		<synopsis>
 			Gets information about the active IAX2 listener binding.
@@ -272,7 +272,7 @@
 	</function>
 	<function name="IAXREGISTRY" language="en_US">
 		<since>
-			<version>23.0.0</version>
+			<version>22.10.1</version>
 		</since>
 		<synopsis>
 			Gets the perceived IP address for a registered IAX registry entry.
@@ -282,7 +282,7 @@
 				<para>The IAX registry username to query.</para>
 			</parameter>
 			<parameter name="item">
-				<para>Valid items are:</para>
+				<para>If <replaceable>username</replaceable> is specified, valid items are:</para>
 				<enumlist>
 					<enum name="address">
 						<para>(default) The perceived IP address returned by the remote server.</para>
